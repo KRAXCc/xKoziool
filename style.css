@@ -1,0 +1,190 @@
+/* Globalne ustawienia */
+html {
+    height: 100%;
+    background: url(/pliki/tlo.gif) black;
+    background-position: center;
+    background-size: cover;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #e0e0e0;
+    text-align: center;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    z-index: -1;
+}
+
+/* Kontener główny */
+.container {
+    max-width: 850px;
+    margin: 60px auto;
+    padding: 100px 20px 20px 20px; /* Dodaj padding-top, żeby filmik nie zasłaniał zawartości */
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Nagłówek */
+h1 {
+    font-size: 3em;
+    color: #ffffff;
+    text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.8);
+    padding-bottom: 10px;
+    border-bottom: 4px solid rgba(255, 255, 255, 0.6);
+    display: inline-block;
+    letter-spacing: 1px;
+    transition: text-shadow 0.3s ease-in-out;
+}
+
+h1:hover {
+    text-shadow: 0px 0px 30px rgb(255, 255, 255);
+}
+
+/* Kategoria */
+.category {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    margin-bottom: 18px;
+    border-radius: 18px;
+    box-shadow: 0 6px 18px rgba(255, 255, 255, 0.4);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.category::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: -40px;
+    width: 120px;
+    height: 120px;
+    background: rgba(255, 255, 255, 0.15);
+    filter: blur(50px);
+    transform: rotate(45deg);
+    transition: all 0.4s ease-in-out;
+}
+
+.category:hover::before {
+    top: -20px;
+    left: -20px;
+    filter: blur(60px);
+}
+
+.category:hover {
+    transform: scale(1.03);
+    box-shadow: 0 5px 35px rgba(255, 255, 255, 0.5);
+}
+
+/* Nagłówki kategorii */
+.category h2 {
+    color: #ffffff;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.6);
+    padding-bottom: 10px;
+    font-size: 1.7em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Lista linków */
+.links {
+    list-style: none;
+    padding: 0;
+}
+
+.links li {
+    margin: 14px 0;
+    font-size: 1.2em;
+    padding: 6px 0;
+    border-radius: 10px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.links a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    padding: 10px 15px;
+    border-radius: 10px;
+    transition: color 0.3s, text-shadow 0.3s, transform 0.2s;
+}
+
+.links li:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.links a:hover {
+    color: #ffffff;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+    transform: scale(1.1);
+}
+
+.logo {
+    size: auto;
+    padding-bottom: 15px;
+}
+
+.filmik {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    width: 360px;
+    max-width: 90vw;
+    padding: 0;
+    z-index: 10;
+}
+
+.filmik iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border-radius: 10px;
+    border: none;
+}
+
+.ostatnifilmik {
+    font-size: 1em;
+    color: limegreen;
+    text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.8);
+    margin: 0 0 6px 0;
+}
+
+@media (max-width: 600px) {
+    .filmik {
+        width: 95vw;
+        top: 8px;
+        left: 8px;
+    }
+
+    .ostatnifilmik {
+        font-size: 0.9em;
+    }
+}
+
+
+/* Animacja wejścia */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
