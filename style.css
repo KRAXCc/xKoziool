@@ -1,12 +1,8 @@
-/* Globalne ustawienia */
-html {
+body {
     height: 100%;
     background: url("https://kraxcc.github.io/xKoziool/pliki/tlo.gif") black;
     background-position: center;
     background-size: cover;
-}
-
-body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
@@ -24,36 +20,50 @@ body::before {
     left: 0;
     width: 100vw;
     height: 100vh;
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
+    backdrop-filter: blur(35px);
+    -webkit-backdrop-filter: blur(35px);
     z-index: -1;
 }
 
-/* Kontener główny */
 .container {
     max-width: 850px;
-    margin: 60px auto;
-    padding: 100px 20px 20px 20px; /* Dodaj padding-top, żeby filmik nie zasłaniał zawartości */
+    margin: 0 auto;
+    padding: 20px;
     animation: fadeIn 1s ease-in-out;
 }
 
-/* Nagłówek */
-h1 {
-    font-size: 3em;
-    color: #ffffff;
+.logo {
+    animation: rotateGlow 5s infinite linear;
+    display: block;
+    margin: 0 auto 20px;
+    max-width: 200px;
+}
+
+.filmik {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    width: 360px;
+    max-width: 90vw;
+    padding: 0;
+    z-index: 10;
+}
+
+.filmik iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border-radius: 10px;
+    border: none;
+}
+
+.ostatnifilmik {
+    animation: ChangeColor 5s infinite linear;
+    font-size: 1em;
     text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.8);
-    padding-bottom: 10px;
-    border-bottom: 4px solid rgba(255, 255, 255, 0.6);
-    display: inline-block;
-    letter-spacing: 1px;
-    transition: text-shadow 0.3s ease-in-out;
+    margin: 0 0 6px 0;
 }
 
-h1:hover {
-    text-shadow: 0px 0px 30px rgb(255, 255, 255);
-}
-
-/* Kategoria */
 .category {
     background: rgba(0, 0, 0, 0.8);
     padding: 20px;
@@ -75,7 +85,7 @@ h1:hover {
     background: rgba(255, 255, 255, 0.15);
     filter: blur(50px);
     transform: rotate(45deg);
-    transition: all 0.4s ease-in-out;
+    transition: all 0.1s ease-in-out;
 }
 
 .category:hover::before {
@@ -89,7 +99,6 @@ h1:hover {
     box-shadow: 0 5px 35px rgba(255, 255, 255, 0.5);
 }
 
-/* Nagłówki kategorii */
 .category h2 {
     color: #ffffff;
     border-bottom: 3px solid rgba(255, 255, 255, 0.6);
@@ -97,9 +106,9 @@ h1:hover {
     font-size: 1.7em;
     text-transform: uppercase;
     letter-spacing: 1px;
+    margin-bottom: 10px;
 }
 
-/* Lista linków */
 .links {
     list-style: none;
     padding: 0;
@@ -134,50 +143,36 @@ h1:hover {
     transform: scale(1.1);
 }
 
-.logo {
-    size: auto;
-    padding-bottom: 15px;
-}
-
-.filmik {
-    position: absolute;
-    top: 16px;
-    left: 16px;
-    width: 360px;
-    max-width: 90vw;
-    padding: 0;
-    z-index: 10;
-}
-
-.filmik iframe {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
-    border-radius: 10px;
-    border: none;
-}
-
-.ostatnifilmik {
+.footer {
+    text-align: center;
+    padding: 40px 20px 20px;
     font-size: 1em;
-    color: limegreen;
-    text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.8);
-    margin: 0 0 6px 0;
+    color: #aaa;
+    background: rgba(0, 0, 0, 0.3);
+    margin-top: 60px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 2s ease-in-out;
 }
 
-@media (max-width: 600px) {
-    .filmik {
-        width: 95vw;
-        top: 8px;
-        left: 8px;
-    }
-
-    .ostatnifilmik {
-        font-size: 0.9em;
-    }
+.fab {
+    color: white;
 }
 
+@keyframes rotateGlow {
+    0% { transform: rotate(0deg); filter: drop-shadow(0 0 1px #9900ff); }
+    25% { transform: rotate(-5deg); filter: drop-shadow(0 0 15px #0066ff); }
+    75% { transform: rotate(5deg); filter: drop-shadow(0 0 15px #0066ff); }
+    100% { transform: rotate(0deg); filter: drop-shadow(0 0 1px #9900ff); }
+}
 
-/* Animacja wejścia */
+@keyframes ChangeColor {
+    0% {  color: #ff006a; }
+    25% {  color: #3cff00; }
+    75% {  color: #eeff00; }
+    100% { color: #ff006a; }
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -186,5 +181,28 @@ h1:hover {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes slideFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 300px) {
+    .filmik {
+        width: 95vw;
+        top: 8px;
+        left: 8px;
+    }
+
+    .ostatnifilmik {
+        font-size: 0.9em;
     }
 }
